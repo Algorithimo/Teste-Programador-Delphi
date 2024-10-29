@@ -24,10 +24,7 @@ type
     procedure btnContagemRegrissivaClick( Sender : TObject );
     procedure TimerTimer( Sender : TObject );
     private
-      { Private declarations }
       FContador : Integer;
-    public
-      { Public declarations }
   end;
 
 var
@@ -49,14 +46,12 @@ procedure TfrmDesafio3.btnContagemRegrissivaClick( Sender : TObject );
 procedure TfrmDesafio3.FormCreate( Sender : TObject );
   begin
     Timer.Enabled := False;
-
   end;
 
 procedure TfrmDesafio3.TimerTimer( Sender : TObject );
   begin
     Dec( FContador );
     lblContagemRegressiva.Caption := IntToStr( FContador );
-
     if FContador <= 0
     then
     begin

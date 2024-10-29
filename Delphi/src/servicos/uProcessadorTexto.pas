@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils,
-  System.Classes;
+  System.Classes,
+  System.StrUtils;
 
 type
   IProcessadorTexto = interface
@@ -45,25 +46,8 @@ function TProcessadorTexto.ContarVogais( const ATexto : string ) : Integer;
   end;
 
 function TProcessadorTexto.InverterPalavras( const ATexto : string ) : string;
-  var
-    ListaPalavras : TStringList;
-    I : Integer;
   begin
-    ListaPalavras := TStringList.Create;
-    try
-      // Divide a string em palavras
-      ListaPalavras.Delimiter := ' ';
-      ListaPalavras.StrictDelimiter := True;
-      ListaPalavras.DelimitedText := ATexto;
-
-      // Inverte a ordem das palavras
-      for I := 0 to ( ListaPalavras.Count div 2 ) - 1 do
-        ListaPalavras.Exchange( I, ListaPalavras.Count - 1 - I );
-
-      Result := ListaPalavras.DelimitedText;
-    finally
-      ListaPalavras.Free;
-    end;
+    Result := ReverseString( ATexto );
   end;
 
 function TProcessadorTexto.ProcessarTexto(

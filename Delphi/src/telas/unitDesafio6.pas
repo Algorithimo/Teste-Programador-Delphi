@@ -24,7 +24,6 @@ type
       FArrayBotoes : TList;
       procedure CriarNovoBotao( PosX, PosY : Integer );
       procedure BotaoClick( Sender : TObject );
-    public
   end;
 
 var
@@ -63,10 +62,7 @@ procedure TfrmDesafio6.CriarNovoBotao( PosX, PosY : Integer );
     if not Assigned( FArrayBotoes )
     then
       FArrayBotoes := TList.Create;
-
     Inc( FContadorBotoes );
-
-    // Cria um novo botão
     NovoBotao := TButton.Create( Self );
     try
       with NovoBotao do

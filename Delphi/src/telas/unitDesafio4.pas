@@ -29,7 +29,6 @@ type
     procedure btnExibirClick( Sender : TObject );
     private
       FPessoa : TPessoa;
-    public
   end;
 
 var

@@ -12,7 +12,7 @@ uses
   Vcl.Controls,
   Vcl.Forms,
   Vcl.Dialogs,
-  uArrayNumerosInteros,
+  uArrayNumeroInteiro,
   Vcl.StdCtrls,
   Vcl.ExtCtrls;
 
@@ -28,15 +28,11 @@ type
     procedure btnProcessarClick( Sender : TObject );
     procedure FormResize( Sender : TObject );
     private
-      { Private declarations }
-      FProcessador : IArrayNumerosInteros;
-
+      FProcessador : IArrayNumeroInteiro;
       procedure InicializarProcessador;
       procedure ProcessarNumeros;
       procedure ExibirResultados;
       procedure TratarErro( const AMensagem : string );
-    public
-      { Public declarations }
   end;
 
 var
@@ -51,7 +47,7 @@ procedure TfrmDesafio1.btnProcessarClick( Sender : TObject );
     try
       ProcessarNumeros;
     except
-      on E : EArrayNumerosInterosException do
+      on E : EArrayNumeroInteiroException do
         TratarErro( E.Message );
     end;
   end;
@@ -69,7 +65,7 @@ procedure TfrmDesafio1.FormResize( Sender : TObject );
 
 procedure TfrmDesafio1.InicializarProcessador;
   begin
-    FProcessador := TArrayNumerosInteros.CriarProcessador;
+    FProcessador := TArrayNumeroInteiro.CriarProcessador;
   end;
 
 procedure TfrmDesafio1.ProcessarNumeros;
@@ -85,7 +81,6 @@ procedure TfrmDesafio1.ExibirResultados;
       FProcessador.ObterSegundoMaior.ToString;
     lblSomaPares.Caption := 'Soma dos números pares: ' +
       FProcessador.ObterSomaDosPares.ToString;
-
     FormResize( Self );
   end;
 

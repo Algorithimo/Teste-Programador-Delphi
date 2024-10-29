@@ -32,8 +32,6 @@ type
     procedure btnDesafio3Click( Sender : TObject );
     procedure btnDesafio5Click( Sender : TObject );
     procedure btnDesafio6Click( Sender : TObject );
-    private
-    public
   end;
 
 var
@@ -116,7 +114,6 @@ procedure TfrmMain.FormResize( Sender : TObject );
     ButtonWidth : Integer;
     ButtonSpacing : Integer;
   begin
-
     pnlTop.Height := Round( Height / 2 ) - 20;
     pnlBottom.Height := Round( Height / 2 ) - 20;
     ButtonWidth := Round( pnlTop.Width / 3 );

@@ -14,12 +14,9 @@ type
     public
       function GetNome : String;
       procedure SetNome( const Value : String );
-
       function GetIdade : Integer;
       procedure SetIdade( const Value : Integer );
-
       function ExibirInfo : String;
-
       property Nome : String
         read GetNome
         write SetNome;

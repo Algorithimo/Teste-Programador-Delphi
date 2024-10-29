@@ -108,7 +108,7 @@
             <Form>frmDesafio1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\servicos\uArrayNumerosInteros.pas"/>
+        <DCCReference Include="src\servicos\uArrayNumeroInteiro.pas"/>
         <DCCReference Include="src\telas\unitDesafio2.pas">
             <Form>frmDesafio2</Form>
             <FormType>dfm</FormType>

@@ -28,10 +28,7 @@ type
     procedure btnProcessarClick( Sender : TObject );
     procedure FormResize( Sender : TObject );
     private
-      { Private declarations }
       FProcessador : IProcessadorTexto;
-    public
-      { Public declarations }
   end;
 
 var
@@ -48,10 +45,8 @@ procedure TfrmDesafio2.btnProcessarClick( Sender : TObject );
   begin
     TextoInvertido := FProcessador.ProcessarTexto( edtProcessar.Text,
       NumeroVogais );
-
     lblInvertido.Caption := 'Texto invertido: ' + TextoInvertido;
     lblVogal.Caption := 'Quantidade de vogais: ' + IntToStr( NumeroVogais );
-
     FormResize( Self );
   end;
 

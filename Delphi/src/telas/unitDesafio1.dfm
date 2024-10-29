@@ -3,8 +3,8 @@ object frmDesafio1: TfrmDesafio1
   Top = 0
   BorderStyle = bsSizeToolWin
   Caption = 'Desafio 1'
-  ClientHeight = 250
-  ClientWidth = 600
+  ClientHeight = 238
+  ClientWidth = 592
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,10 +16,10 @@ object frmDesafio1: TfrmDesafio1
   OnResize = FormResize
   TextHeight = 15
   object lblSomaPares: TLabel
-    Left = 462
+    Left = 454
     Top = 41
     Width = 138
-    Height = 142
+    Height = 130
     Align = alRight
     Alignment = taCenter
     Caption = 'Soma dos N'#250'meros Pares:'
@@ -31,7 +31,7 @@ object frmDesafio1: TfrmDesafio1
     Left = 0
     Top = 41
     Width = 134
-    Height = 142
+    Height = 130
     Align = alLeft
     Alignment = taCenter
     Caption = 'Segundo Maior N'#250'mero: '
@@ -41,7 +41,7 @@ object frmDesafio1: TfrmDesafio1
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 600
+    Width = 592
     Height = 41
     Align = alTop
     Caption = 'Por favor use ";" para separar os n'#250'meros, exemplo: 1;2;3;4;5;6'
@@ -52,17 +52,14 @@ object frmDesafio1: TfrmDesafio1
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 592
   end
   object pnlBottom: TPanel
     Left = 0
-    Top = 183
-    Width = 600
+    Top = 171
+    Width = 592
     Height = 67
     Align = alBottom
     TabOrder = 1
-    ExplicitTop = 171
-    ExplicitWidth = 592
     object edtNumeros: TEdit
       AlignWithMargins = True
       Left = 21

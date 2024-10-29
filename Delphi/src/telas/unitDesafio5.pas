@@ -30,7 +30,6 @@ type
       function ObterProximoNumero( var expr : string ) : Double;
       function ObterProximoOperador( var expr : string ) : Char;
       function AvaliarTermo( var expr : string ) : Double;
-    public
   end;
 
 var
@@ -46,7 +45,6 @@ function TfrmDesafio5.ValidarParenteses( const expressao : string ) : Boolean;
     i : Integer;
   begin
     contador := 0;
-
     for i := 1 to Length( expressao ) do
     begin
       if expressao[ i ] = '('
@@ -64,7 +62,6 @@ function TfrmDesafio5.ValidarParenteses( const expressao : string ) : Boolean;
         end;
       end;
     end;
-
     Result := ( contador = 0 );
   end;
 
@@ -73,7 +70,6 @@ function TfrmDesafio5.CalcularExpressao( const expressao : string ) : Double;
     expressaoLimpa : string;
   begin
     expressaoLimpa := StringReplace( expressao, ' ', '', [ rfReplaceAll ] );
-
     try
       Result := AvaliarExpressao( expressaoLimpa );
     except
@@ -90,18 +86,15 @@ function TfrmDesafio5.AvaliarExpressao( expressao : string ) : Double;
     op : Char;
   begin
     num1 := AvaliarTermo( expressao );
-
     while True do
     begin
       op := ObterProximoOperador( expressao );
-
       if not ( op in [ '+', '-' ] )
       then
       begin
         Result := num1;
         Exit;
       end;
-
       case op of
         '+' :
           num1 := num1 + AvaliarTermo( expressao );
@@ -117,11 +110,9 @@ function TfrmDesafio5.AvaliarTermo( var expr : string ) : Double;
     op : Char;
   begin
     num1 := ObterProximoNumero( expr );
-
     while True do
     begin
       op := ObterProximoOperador( expr );
-
       if not ( op in [ '*', '/' ] )
       then
       begin
@@ -131,9 +122,7 @@ function TfrmDesafio5.AvaliarTermo( var expr : string ) : Double;
           Insert( op, expr, 1 );
         Exit;
       end;
-
       num2 := ObterProximoNumero( expr );
-
       case op of
         '*' :
           num1 := num1 * num2;
@@ -152,36 +141,27 @@ function TfrmDesafio5.ObterProximoNumero( var expr : string ) : Double;
     num : string;
     i : Integer;
   begin
-    // Remove espaços iniciais
     expr := TrimLeft( expr );
-
-    // Se começar com parênteses, avalia a subexpressão
     if ( Length( expr ) > 0 ) and ( expr[ 1 ] = '(' )
     then
     begin
-      Delete( expr, 1, 1 ); // Remove o '('
+      Delete( expr, 1, 1 );
       Result := AvaliarExpressao( expr );
       expr := TrimLeft( expr );
       if ( Length( expr ) > 0 ) and ( expr[ 1 ] = ')' )
       then
-        Delete( expr, 1, 1 ); // Remove o ')'
+        Delete( expr, 1, 1 );
       Exit;
     end;
-
     num := '';
     i := 1;
-
-    // Coleta os dígitos do número
     while ( i <= Length( expr ) ) and
       ( expr[ i ] in [ '0' .. '9', '.', '-' ] ) do
     begin
       num := num + expr[ i ];
       Inc( i );
     end;
-
-    // Remove o número da expressão
     Delete( expr, 1, Length( num ) );
-
     if num = ''
     then
       Result := 0
@@ -207,25 +187,19 @@ procedure TfrmDesafio5.btnCalcularClick( Sender : TObject );
     expressao : string;
   begin
     expressao := edtCalcular.Text;
-
-    // Verifica se a expressão está vazia
     if expressao.Trim.IsEmpty
     then
     begin
       ShowMessage( 'Por favor, insira uma expressão matemática.' );
       Exit;
     end;
-
-    // Valida os parênteses
     if not ValidarParenteses( expressao )
     then
     begin
       ShowMessage( 'Erro: Parênteses não estão balanceados corretamente.' );
       Exit;
     end;
-
     try
-      // Calcula o resultado
       lblResultado.Caption := 'Resultado: ' +
         FloatToStr( CalcularExpressao( expressao ) );
     except

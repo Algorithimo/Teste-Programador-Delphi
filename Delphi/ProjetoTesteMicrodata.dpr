@@ -4,7 +4,7 @@ uses
   Vcl.Forms,
   Main in 'Main.pas' {frmMain},
   unitDesafio1 in 'src\telas\unitDesafio1.pas' {frmDesafio1},
-  uArrayNumerosInteros in 'src\servicos\uArrayNumerosInteros.pas',
+  uArrayNumeroInteiro in 'src\servicos\uArrayNumeroInteiro.pas',
   unitDesafio2 in 'src\telas\unitDesafio2.pas' {frmDesafio2},
   uProcessadorTexto in 'src\servicos\uProcessadorTexto.pas',
   unitDesafio3 in 'src\telas\unitDesafio3.pas' {frmDesafio3},
