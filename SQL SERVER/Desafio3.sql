@@ -10,13 +10,12 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION
 
-        -- Exclua todos os lançamentos associados ao pedido
+    
         DELETE FROM TB_PEDIDO_ITEM
         WHERE ID_PEDIDO_VENDA = @ID_PEDIDO_VENDA
 
         COMMIT TRANSACTION
 
-        -- Retorne a mensagem de sucesso
         DECLARE @Mensagem nvarchar(50) = 'Lançamentos removidos com sucesso'
         SELECT @Mensagem AS Mensagem
 
@@ -24,11 +23,9 @@ BEGIN
     BEGIN CATCH
         ROLLBACK TRANSACTION
 
-        -- Declare a variável @Erro e atribua o erro
         DECLARE @Erro nvarchar(200)
-        SET @Erro = ERROR_MESSAGE()  -- Correção aqui: remove a string ao redor da função
+        SET @Erro = ERROR_MESSAGE() 
 
-        -- Retorne a mensagem de erro
         SELECT @Erro AS Erro
     END CATCH
 END
