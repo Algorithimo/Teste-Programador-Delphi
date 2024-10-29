@@ -15,7 +15,7 @@ Este projeto é organizado da seguinte maneira:
     -  **telas**: Contém as telas do projeto.
     -  **servicos**: Contém as classes das telas do projeto.
 
-- **SQLSERVER**: Contém a aplicação cliente.
+- **SQLSERVER**: Contém os scripts dos desafios.
   - **Desafio1**: Criação das tabelas, constraints, insert de dados de exemplo.
   - **Desafio2**: Query de Cliente.
   - **Desafio3**: Procedure que apaga os itens de um pedido.
