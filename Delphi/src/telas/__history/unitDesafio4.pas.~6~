@@ -1,0 +1,32 @@
+unit unitDesafio4;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmDesafio4 = class(TForm)
+    Edit1: TEdit;
+    edtIdade: TEdit;
+    Label1: TLabel;
+    lblIdade: TLabel;
+    pnlTop: TPanel;
+    btnExibir: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmDesafio4: TfrmDesafio4;
+
+implementation
+
+{$R *.dfm}
+
+uses uPessoa;
+
+end.

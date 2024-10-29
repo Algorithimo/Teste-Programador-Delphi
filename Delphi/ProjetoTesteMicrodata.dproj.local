@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/08/25 20:57:51.000.931,=C:\Users\souza\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2024/08/26 20:07:14.000.139,=C:\Users\souza\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit3.pas</Transaction>
+    <Transaction>2024/10/28 18:08:08.000.658,=C:\Users\souza\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2024/10/28 18:10:03.000.109,F:\Projetos\Teste-Programador-Delphi-Microdata\Main.dfm=C:\Users\souza\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit4.dfm</Transaction>
+    <Transaction>2024/10/28 18:10:03.000.109,F:\Projetos\Teste-Programador-Delphi-Microdata\Main.pas=C:\Users\souza\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit4.pas</Transaction>
+    <Transaction>2024/10/28 18:11:50.000.465,F:\Projetos\Teste-Programador-Delphi-Microdata\ProjetoTesteMicrodata.dproj=C:\Users\souza\OneDrive\Documentos\Embarcadero\Studio\Projects\Project3.dproj</Transaction>
+    <Transaction>2024/10/28 18:40:29.000.083,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 18:49:41.000.094,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit2.pas</Transaction>
+    <Transaction>2024/10/28 18:50:23.000.639,=F:\Projetos\Teste-Programador-Delphi-Microdata\src\servicos\uArrayNumerosInteros.pas</Transaction>
+    <Transaction>2024/10/28 18:59:40.000.626,F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio1.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 18:59:40.000.626,F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio1.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.dfm</Transaction>
+    <Transaction>2024/10/28 19:39:29.000.432,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 19:39:38.000.411,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit2.pas</Transaction>
+    <Transaction>2024/10/28 19:39:56.000.816,F:\Projetos\Teste-Programador-Delphi-Microdata\src\servicos\uProcessadorTexto.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit2.pas</Transaction>
+    <Transaction>2024/10/28 19:40:20.000.478,F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio2.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 19:40:20.000.478,F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio2.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.dfm</Transaction>
+    <Transaction>2024/10/28 19:56:34.000.872,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 19:59:34.000.947,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio3.dfm</Transaction>
+    <Transaction>2024/10/28 19:59:34.000.947,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio3.pas</Transaction>
+    <Transaction>2024/10/28 20:08:41.000.666,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 20:09:03.000.221,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\src\servicos\uPessoa.pas</Transaction>
+    <Transaction>2024/10/28 20:10:54.000.744,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit2.pas</Transaction>
+    <Transaction>2024/10/28 20:11:42.000.936,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit2.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio4.pas</Transaction>
+    <Transaction>2024/10/28 20:11:42.000.936,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit2.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio4.dfm</Transaction>
+    <Transaction>2024/10/28 20:32:12.000.712,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 20:46:03.000.473,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio5.pas</Transaction>
+    <Transaction>2024/10/28 20:46:03.000.473,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio5.dfm</Transaction>
+    <Transaction>2024/10/28 21:33:01.000.528,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 21:36:09.000.140,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio6.pas</Transaction>
+    <Transaction>2024/10/28 21:36:09.000.140,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio6.dfm</Transaction>
+    <Transaction>2024/10/28 23:00:50.000.408,F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio6.pas=</Transaction>
+    <Transaction>2024/10/28 23:01:29.000.563,=F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas</Transaction>
+    <Transaction>2024/10/28 23:01:39.000.001,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.pas=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio6.pas</Transaction>
+    <Transaction>2024/10/28 23:01:39.000.001,F:\Projetos\Teste-Programador-Delphi-Microdata\Unit1.dfm=F:\Projetos\Teste-Programador-Delphi-Microdata\src\telas\unitDesafio6.dfm</Transaction>
+  </Transactions>
+</BorlandProject>

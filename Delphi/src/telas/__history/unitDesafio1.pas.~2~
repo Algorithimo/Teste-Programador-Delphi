@@ -1,0 +1,40 @@
+unit unitDesafio1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uArrayNumerosInteros, Vcl.StdCtrls;
+
+type
+  TfrmDesafio1 = class(TForm)
+    edtNumeros: TEdit;
+    btnProcessar: TButton;
+    lblSomaPares: TLabel;
+    lblSegundoMaior: TLabel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    FProcessador: IArrayNumerosInteros;
+
+    procedure InicializarProcessador;
+    procedure ProcessarNumeros;
+    procedure ExibirResultados;
+    procedure TratarErro(const AMensagem: string);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmDesafio1: TfrmDesafio1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmDesafio1.FormCreate(Sender: TObject);
+begin
+  InicializarProcessador;
+end;
+
+end.

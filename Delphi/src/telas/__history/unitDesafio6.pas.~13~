@@ -1,0 +1,100 @@
+unit unitDesafio6;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls, Generics.Collections;
+
+type
+  TfrmDesafio6 = class(TForm)
+    btnCriarBotao: TButton;
+    procedure btnCriarBotaoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    FContadorBotoes: Integer;
+    FArrayBotoes: TList<TButton>;
+    procedure CriarNovoBotao(PosX, PosY: Integer);
+    procedure BotaoClick(Sender: TObject);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmDesafio6: TfrmDesafio6;
+
+implementation
+
+{$R *.DFM}
+
+procedure TfrmDesafio6.FormCreate(Sender: TObject);
+begin
+  FContadorBotoes := 0;
+  FArrayBotoes := TList<TButton>.Create;
+  btnCriarBotao.Caption := 'Iniciar';
+end;
+
+procedure TfrmDesafio6.FormDestroy(Sender: TObject);
+var
+  Botao: TButton;
+begin
+  // Libera todos os botões
+  for Botao in FArrayBotoes do
+    Botao.Free;
+
+  FArrayBotoes.Free; // Libera a lista
+end;
+
+procedure TfrmDesafio6.CriarNovoBotao(PosX, PosY: Integer);
+var
+  NovoBotao: TButton;
+begin
+  Inc(FContadorBotoes);
+
+  // Cria um novo botão
+  NovoBotao := TButton.Create(Self);
+  try
+    NovoBotao.Parent := Self;
+    NovoBotao.Left := PosX + 100;
+    NovoBotao.Top := PosY + 30;
+    NovoBotao.Width := 75;
+    NovoBotao.Height := 35;
+    NovoBotao.Caption := IntToStr(FContadorBotoes);
+    NovoBotao.OnClick := BotaoClick;
+
+    // Adiciona o novo botão à lista
+    FArrayBotoes.Add(NovoBotao);
+
+    // Verifica se a posição do botão está dentro dos limites da tela
+    if NovoBotao.Left > Self.Width - 100 then
+      NovoBotao.Left := 20;
+    if NovoBotao.Top > Self.Height - 100 then
+      NovoBotao.Top := 50;
+
+  except
+    NovoBotao.Free; // Libera o botão se ocorrer um erro
+    raise;
+  end;
+end;
+
+procedure TfrmDesafio6.btnCriarBotaoClick(Sender: TObject);
+begin
+  if Sender = btnCriarBotao then
+    CriarNovoBotao(20, 50); // Cria o primeiro botão em posição fixa
+end;
+
+procedure TfrmDesafio6.BotaoClick(Sender: TObject);
+var
+  Botao: TButton;
+begin
+  if Sender is TButton then
+  begin
+    Botao := TButton(Sender); // Obtém o botão que chamou o evento
+    ShowMessage('Botão ' + Botao.Caption + ' criado!');
+    // Não cria um novo botão aqui
+  end;
+end;
+
+end.
+

@@ -1,0 +1,240 @@
+unit unitDesafio5;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Vcl.ExtCtrls;
+
+type
+  TfrmDesafio5 = class( TForm )
+    pnlTop : TPanel;
+    lblResultado : TLabel;
+    pnlBottom : TPanel;
+    edtCalcular : TEdit;
+    btnCalcular : TButton;
+    procedure btnCalcularClick( Sender : TObject );
+    private
+      function ValidarParenteses( const expressao : string ) : Boolean;
+      function CalcularExpressao( const expressao : string ) : Double;
+      function AvaliarExpressao( expressao : string ) : Double;
+      function ObterProximoNumero( var expr : string ) : Double;
+      function ObterProximoOperador( var expr : string ) : Char;
+      function AvaliarTermo( var expr : string ) : Double;
+    public
+  end;
+
+var
+  frmDesafio5 : TfrmDesafio5;
+
+implementation
+
+{$R *.dfm}
+
+function TfrmDesafio5.ValidarParenteses( const expressao : string ) : Boolean;
+  var
+    contador : Integer;
+    i : Integer;
+  begin
+    contador := 0;
+
+    for i := 1 to Length( expressao ) do
+    begin
+      if expressao[ i ] = '('
+      then
+        Inc( contador )
+      else if expressao[ i ] = ')'
+      then
+      begin
+        Dec( contador );
+        if contador < 0
+        then
+        begin
+          Result := False;
+          Exit;
+        end;
+      end;
+    end;
+
+    Result := ( contador = 0 );
+  end;
+
+function TfrmDesafio5.CalcularExpressao( const expressao : string ) : Double;
+  var
+    expressaoLimpa : string;
+  begin
+    expressaoLimpa := StringReplace( expressao, ' ', '', [ rfReplaceAll ] );
+
+    try
+      Result := AvaliarExpressao( expressaoLimpa );
+    except
+      on E : Exception do
+      begin
+        raise Exception.Create( 'Erro ao calcular expressão: ' + E.Message );
+      end;
+    end;
+  end;
+
+function TfrmDesafio5.AvaliarExpressao( expressao : string ) : Double;
+  var
+    num1 : Double;
+    op : Char;
+  begin
+    num1 := AvaliarTermo( expressao );
+
+    while True do
+    begin
+      op := ObterProximoOperador( expressao );
+
+      if not ( op in [ '+', '-' ] )
+      then
+      begin
+        Result := num1;
+        Exit;
+      end;
+
+      case op of
+        '+' :
+          num1 := num1 + AvaliarTermo( expressao );
+        '-' :
+          num1 := num1 - AvaliarTermo( expressao );
+      end;
+    end;
+  end;
+
+function TfrmDesafio5.AvaliarTermo( var expr : string ) : Double;
+  var
+    num1, num2 : Double;
+    op : Char;
+  begin
+    num1 := ObterProximoNumero( expr );
+
+    while True do
+    begin
+      op := ObterProximoOperador( expr );
+
+      if not ( op in [ '*', '/' ] )
+      then
+      begin
+        Result := num1;
+        if op <> #0
+        then
+          Insert( op, expr, 1 );
+        Exit;
+      end;
+
+      num2 := ObterProximoNumero( expr );
+
+      case op of
+        '*' :
+          num1 := num1 * num2;
+        '/' :
+          if num2 = 0
+          then
+            raise Exception.Create( 'Divisão por zero!' )
+          else
+            num1 := num1 / num2;
+      end;
+    end;
+  end;
+
+function TfrmDesafio5.ObterProximoNumero( var expr : string ) : Double;
+  var
+    num : string;
+    i : Integer;
+  begin
+    // Remove espaços iniciais
+    expr := TrimLeft( expr );
+
+    // Se começar com parênteses, avalia a subexpressão
+    if ( Length( expr ) > 0 ) and ( expr[ 1 ] = '(' )
+    then
+    begin
+      Delete( expr, 1, 1 ); // Remove o '('
+      Result := AvaliarExpressao( expr );
+      expr := TrimLeft( expr );
+      if ( Length( expr ) > 0 ) and ( expr[ 1 ] = ')' )
+      then
+        Delete( expr, 1, 1 ); // Remove o ')'
+      Exit;
+    end;
+
+    num := '';
+    i := 1;
+
+    // Coleta os dígitos do número
+    while ( i <= Length( expr ) ) and
+      ( expr[ i ] in [ '0' .. '9', '.', '-' ] ) do
+    begin
+      num := num + expr[ i ];
+      Inc( i );
+    end;
+
+    // Remove o número da expressão
+    Delete( expr, 1, Length( num ) );
+
+    if num = ''
+    then
+      Result := 0
+    else
+      Result := StrToFloat( num );
+  end;
+
+function TfrmDesafio5.ObterProximoOperador( var expr : string ) : Char;
+  begin
+    expr := TrimLeft( expr );
+    if expr = ''
+    then
+      Result := #0
+    else
+    begin
+      Result := expr[ 1 ];
+      Delete( expr, 1, 1 );
+    end;
+  end;
+
+procedure TfrmDesafio5.btnCalcularClick( Sender : TObject );
+  var
+    expressao : string;
+  begin
+    expressao := edtCalcular.Text;
+
+    // Verifica se a expressão está vazia
+    if expressao.Trim.IsEmpty
+    then
+    begin
+      ShowMessage( 'Por favor, insira uma expressão matemática.' );
+      Exit;
+    end;
+
+    // Valida os parênteses
+    if not ValidarParenteses( expressao )
+    then
+    begin
+      ShowMessage( 'Erro: Parênteses não estão balanceados corretamente.' );
+      Exit;
+    end;
+
+    try
+      // Calcula o resultado
+      lblResultado.Caption := 'Resultado: ' +
+        FloatToStr( CalcularExpressao( expressao ) );
+    except
+      on E : Exception do
+      begin
+        ShowMessage( E.Message );
+        lblResultado.Caption := 'Erro';
+      end;
+    end;
+  end;
+
+end.

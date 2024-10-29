@@ -1,0 +1,101 @@
+unit unitDesafio6;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
+  StdCtrls;
+
+type
+  TfrmDesafio6 = class(TForm)
+    btnCriarBotao: TButton;
+    procedure btnCriarBotaoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+  private
+    { Private declarations }
+    FContadorBotoes: Integer;
+    FArrayBotoes: TList;
+    procedure CriarNovoBotao(PosX, PosY: Integer);
+    procedure BotaoClick(Sender: TObject);
+  public
+    { Public declarations }
+  end;
+
+var
+  frmDesafio6: TfrmDesafio6;
+
+implementation
+
+{$R *.DFM}
+
+procedure TfrmDesafio6.FormCreate(Sender: TObject);
+begin
+  FContadorBotoes := 0;
+  FArrayBotoes := TList.Create;
+
+  // Configura o botão inicial
+  btnCriarBotao.Caption := 'Iniciar';
+end;
+
+procedure TfrmDesafio6.FormDestroy(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to FArrayBotoes.Count - 1 do
+    TButton(FArrayBotoes[i]).Free;
+
+  FArrayBotoes.Free;
+end;
+
+procedure TfrmDesafio6.CriarNovoBotao(PosX, PosY: Integer);
+var
+  NovoBotao: TButton;
+begin
+  Inc(FContadorBotoes);
+
+  // Cria um novo botão
+  NovoBotao := TButton.Create(Self);
+  with NovoBotao do
+  begin
+    Parent := Self;
+    // Posiciona o novo botão à direita do botão que o criou
+    Left := PosX + 100;
+    // Adiciona um pequeno deslocamento vertical para criar um efeito cascata
+    Top := PosY + 30;
+    Width := 75;
+    Height := 35;
+    Caption := IntToStr(FContadorBotoes);
+    OnClick := BotaoClick;
+    // Verifica se o botão não está muito à direita ou embaixo
+    if Left > Self.Width - 100 then
+      Left := 20;
+    if Top > Self.Height - 100 then
+      Top := 50;
+  end;
+
+  FArrayBotoes.Add(NovoBotao);
+end;
+
+procedure TfrmDesafio6.btnCriarBotaoClick(Sender: TObject);
+begin
+  if Sender = btnCriarBotao then
+    // Se for o botão inicial, cria o primeiro botão em posição fixa
+    CriarNovoBotao(20, 50)
+  else if Sender is TButton then
+    // Se for um botão criado dinamicamente, usa sua posição para criar o próximo
+    CriarNovoBotao(TButton(Sender).Left, TButton(Sender).Top);
+end;
+
+procedure TfrmDesafio6.BotaoClick(Sender: TObject);
+begin
+  if Sender is TButton then
+  begin
+    ShowMessage('Botão ' + TButton(Sender).Caption + ' criará um novo botão!');
+    btnCriarBotaoClick(Sender);
+  end;
+end;
+
+end.
+
+end.

@@ -1,0 +1,102 @@
+unit unitDesafio5;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
+
+type
+  TfrmDesafio5 = class(TForm)
+    edtCalcular: TEdit;
+    lblResultado: TLabel;
+    btnCalcular: TButton;
+    procedure btnCalcularClick(Sender: TObject);
+  private
+    function ValidarParenteses(const expressao: string): Boolean;
+    function CalcularExpressao(const expressao: string): Double;
+  public
+  end;
+
+var
+  frmDesafio5: TfrmDesafio5;
+
+implementation
+
+{$R *.dfm}
+
+function TfrmDesafio5.ValidarParenteses(const expressao: string): Boolean;
+var
+  pilha: TArray<Char>;
+  contador: Integer;
+  caractere: Char;
+begin
+  SetLength(pilha, 0);
+
+  for caractere in expressao do
+  begin
+    if caractere = '(' then
+    begin
+      SetLength(pilha, Length(pilha) + 1);
+      pilha[High(pilha)] := caractere;
+    end
+    else if caractere = ')' then
+    begin
+      if Length(pilha) = 0 then
+      begin
+        Result := False;
+        Exit;
+      end;
+      SetLength(pilha, Length(pilha) - 1);
+    end;
+  end;
+
+  Result := Length(pilha) = 0;
+end;
+
+function TfrmDesafio5.CalcularExpressao(const expressao: string): Double;
+var
+  expressaoLimpa: string;
+begin
+  expressaoLimpa := StringReplace(expressao, ' ', '', [rfReplaceAll]);
+
+  try
+    Result := StrToFloat(expressaoLimpa);
+  except
+    on E: Exception do
+    begin
+      raise Exception.Create('Erro ao calcular expressão: ' + E.Message);
+    end;
+  end;
+end;
+
+procedure TfrmDesafio5.btnCalcularClick(Sender: TObject);
+var
+  expressao: string;
+begin
+  expressao := edtCalcular.Text;
+
+  if expressao.Trim.IsEmpty then
+  begin
+    ShowMessage('Por favor, insira uma expressão matemática.');
+    Exit;
+  end;
+
+  if not ValidarParenteses(expressao) then
+  begin
+    ShowMessage('Erro: Parênteses não estão balanceados corretamente.');
+    Exit;
+  end;
+
+  try
+    lblResultado.Caption := FloatToStr(CalcularExpressao(expressao));
+  except
+    on E: Exception do
+    begin
+      ShowMessage('Erro ao calcular expressão: ' + E.Message);
+      lblResultado.Caption := 'Erro';
+    end;
+  end;
+end;
+
+end.
