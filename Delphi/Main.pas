@@ -116,6 +116,7 @@ procedure TfrmMain.FormResize( Sender : TObject );
     ButtonWidth : Integer;
     ButtonSpacing : Integer;
   begin
+
     pnlTop.Height := Round( Height / 2 ) - 20;
     pnlBottom.Height := Round( Height / 2 ) - 20;
     ButtonWidth := Round( pnlTop.Width / 3 );
